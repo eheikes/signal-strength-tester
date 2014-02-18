@@ -1,8 +1,8 @@
 var WifiTester = (function() {
   function WifiTester() {
-    this.httpType = 'HEAD';
-    this.testUrl  = 'http://ajax.googleapis.com/ajax/services/search/web?v=1.0&q=test';
-    this.useJsonP = true;
+    this.httpType = 'GET';
+    this.testUrl  = 'http://192.168.0.1/test-payload.txt';
+    this.useJsonP = false;
     this.timeout  = 1000; // request timeout, in millisecs
     this.interval = 1000; // polling frequency, in millisecs
 
