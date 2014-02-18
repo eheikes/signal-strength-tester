@@ -11,6 +11,16 @@ var WifiTester = (function() {
 
   WifiTester.prototype.calc = function() {
     this.percentSuccessful = this.numRequests / this.numResponses * 100;
+
+    if (this.numResponses === 0) {
+      this.strength = 'No Signal';
+    } else if (this.percentSuccessful >= 4/5 * 100) {
+      this.strength = 'Strong';
+    } else if (this.percentSuccessful >= 2/5 * 100) {
+      this.strength = 'Medium';
+    } else {
+      this.strength = 'Weak';
+    }
   };
 
   WifiTester.prototype.reset = function() {
@@ -18,6 +28,7 @@ var WifiTester = (function() {
     this.numRequests       = 0;
     this.numResponses      = 0;
     this.percentSuccessful = 0;
+    this.strength          = '';
 
     if (this.intervalID) {
       window.clearInterval(this.intervalID);
