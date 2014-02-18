@@ -10,7 +10,7 @@ var WifiTester = (function() {
   }
 
   WifiTester.prototype.calc = function() {
-    this.percentSuccessful = this.numRequests / this.numResponses * 100;
+    this.percentSuccessful = this.numResponses / this.numRequests * 100;
 
     if (this.numResponses === 0) {
       this.strength = 'No Signal';
