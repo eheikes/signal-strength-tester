@@ -45,7 +45,6 @@ var WifiTester = (function() {
     var accepted = ['httpType', 'testUrl', 'useJsonP', 'timeout', 'interval'];
     if (accepted.indexOf(prop) > -1) { // is this an accepted property?
       this[prop] = val;
-      console.log('set ' + prop + ' to ', val);
       return true;
     }
     return false;
