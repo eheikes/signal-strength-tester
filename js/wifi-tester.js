@@ -80,8 +80,12 @@ var WifiTester = (function() {
 
     ajax.fail(function(jqXHR, textStatus, errorThrown) {
       if (currentIntervalID === tester.intervalID) {
-        console.log(textStatus);
-        console.log(errorThrown);
+        if (textStatus === 'parsererror') { // JSONP parse errors are acceptable
+          tester.numResponses++;
+        } else {
+          console.log(textStatus);
+          console.log(errorThrown);
+        }
       }
     });
 
