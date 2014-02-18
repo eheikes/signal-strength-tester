@@ -13,7 +13,7 @@ $(document).ready(function() {
   });
 
   // Set up the Settings form.
-  $('#settings').on('change', 'input', function() {
+  $('#settings').on('change', 'input,select', function() {
     var id   = $(this).attr('id');
     var prop = id.replace(/^setting-/, '');
     var val  = $(this).val();
