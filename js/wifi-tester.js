@@ -10,13 +10,13 @@ var WifiTester = (function() {
   }
 
   WifiTester.prototype.calc = function() {
-    this.percentSuccessful = this.numResponses / this.numRequests * 100;
+    this.percentSuccessful = this.numResponses / this.numRequests;
 
     if (this.numResponses === 0) {
       this.strength = 'No Signal';
-    } else if (this.percentSuccessful >= 4/5 * 100) {
+    } else if (this.percentSuccessful >= 4/5) {
       this.strength = 'Strong';
-    } else if (this.percentSuccessful >= 2/5 * 100) {
+    } else if (this.percentSuccessful >= 2/5) {
       this.strength = 'Medium';
     } else {
       this.strength = 'Weak';

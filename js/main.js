@@ -49,9 +49,9 @@ function updateData() {
   if (!tester.isRunning) { return; }
 
   var table = $('table#data');
-  $('.requests',   table).text(tester.numRequests);
-  $('.responses',  table).text(tester.numResponses);
-  $('.percentage', table).text(tester.percentSuccessful);
+  $('.requests',   table).text(numeral(tester.numRequests).format('0,0'));
+  $('.responses',  table).text(numeral(tester.numResponses).format('0,0'));
+  $('.percentage', table).text(numeral(tester.percentSuccessful).format('0.0%'));
 
   var strength = $('#strength');
   var strengthClass = '';
