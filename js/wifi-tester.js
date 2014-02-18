@@ -61,6 +61,7 @@ var WifiTester = (function() {
 
   WifiTester.prototype.test = function() {
     var tester = this;
+    var currentIntervalID = tester.intervalID;
 
     tester.numRequests++;
 
@@ -73,14 +74,18 @@ var WifiTester = (function() {
     });
 
     ajax.done(function(data, textStatus, jqXHR) {
-      tester.numResponses++;
-      tester.calc();
+      if (currentIntervalID === tester.intervalID) {
+        tester.numResponses++;
+        tester.calc();
+      }
     });
 
     ajax.fail(function(jqXHR, textStatus, errorThrown) {
-      tester.calc();
-      console.log(textStatus);
-      console.log(errorThrown);
+      if (currentIntervalID === tester.intervalID) {
+        tester.calc();
+        console.log(textStatus);
+        console.log(errorThrown);
+      }
     });
   };
 
