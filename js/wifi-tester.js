@@ -41,6 +41,16 @@ var WifiTester = (function() {
     this.start();
   };
 
+  WifiTester.prototype.set = function(prop, val) {
+    var accepted = ['httpType', 'testUrl', 'useJsonP', 'timeout', 'interval'];
+    if (accepted.indexOf(prop) > -1) { // is this an accepted property?
+      this[prop] = val;
+      console.log('set ' + prop + ' to ', val);
+      return true;
+    }
+    return false;
+  };
+
   WifiTester.prototype.start = function() {
     var tester = this;
     tester.isRunning = true;

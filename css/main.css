@@ -3,6 +3,10 @@ body {
   padding-bottom: 15px;
 }
 
+.panel-heading[data-toggle] {
+  cursor: pointer;
+}
+
 button#start {
   margin-bottom: 0.5em;
 }
