@@ -3,8 +3,9 @@ var WifiTester = (function() {
     this.httpType = 'GET';
     this.testUrl  = 'http://192.168.0.1/test-payload.txt';
     this.useJsonP = false;
-    this.timeout  = 1000; // request timeout, in millisecs
-    this.interval = 1000; // polling frequency, in millisecs
+    this.timeout  = 1000;   // request timeout, in millisecs
+    this.interval = 1000;   // polling frequency, in millisecs
+    this.hasRun   = false;  // has the tester _ever_ run?
 
     this.reset();
   }
@@ -47,6 +48,7 @@ var WifiTester = (function() {
 
   WifiTester.prototype.start = function() {
     var tester = this;
+    tester.hasRun = true;
     tester.isRunning = true;
     tester.intervalID = window.setInterval(function() {
       tester.test();

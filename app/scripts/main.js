@@ -63,6 +63,8 @@ $(document).ready(function() {
 });
 
 function updateData() {
+  if (!tester.hasRun) { return; }
+
   var table = $('table#data');
   $('.requests',   table).text(numeral(tester.numRequests).format('0,0'));
   $('.responses',  table).text(numeral(tester.numResponses).format('0,0'));
