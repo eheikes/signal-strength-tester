@@ -1,4 +1,50 @@
-$(document).ready(function() {
+/* global tester */
+
+var updateData = function() {
+  'use strict';
+
+  if (!tester.hasRun) { return; }
+
+  var table = $('table#data');
+  $('.requests',   table).text(numeral(tester.numRequests).format('0,0'));
+  $('.responses',  table).text(numeral(tester.numResponses).format('0,0'));
+  $('.percentage', table).text(numeral(tester.percentSuccessful).format('0.0%'));
+
+  var strength = $('#strength');
+  var strengthClass = '';
+  switch (tester.strength) {
+    case 'Strong':
+      strengthClass = 'text-success';
+      break;
+    case 'Medium':
+      strengthClass = 'text-info';
+      break;
+    case 'Weak':
+      strengthClass = 'text-warning';
+      break;
+    case 'No Signal':
+      strengthClass = 'text-danger';
+      break;
+  }
+  strength.removeClass('hidden text-success text-info text-warning text-danger');
+  strength.addClass(strengthClass);
+  $('.text', strength).text(tester.strength);
+};
+
+var updateSettingsForm = function() {
+  'use strict';
+
+  var settings = $('#settings');
+
+  $('#setting-httpType', settings).val(tester.httpType);
+  $('#setting-testUrl',  settings).val(tester.testUrl);
+  $('#setting-useJsonP', settings).prop('checked', tester.useJsonP);
+  $('#setting-timeout',  settings).val(tester.timeout);
+  $('#setting-interval', settings).val(tester.interval);
+};
+
+var setupPage = function() {
+  'use strict';
 
   // Hide the no-JS alert.
   $('#no-js-msg').addClass('hidden');
@@ -50,7 +96,7 @@ $(document).ready(function() {
 
   // Always keep one accordion panel open.
   // Adapted from http://stackoverflow.com/a/15725889/258076
-  $('.panel-heading').on('click', function(event) {
+  $('.panel-heading').on('click', function() {
     if ($(this).parents('.panel').children('.panel-collapse').hasClass('in')) {
       return false;
     }
@@ -60,35 +106,6 @@ $(document).ready(function() {
   window.setInterval(function() {
     updateData();
   }, 500); // every half second
-});
+};
 
-function updateData() {
-  if (!tester.hasRun) { return; }
-
-  var table = $('table#data');
-  $('.requests',   table).text(numeral(tester.numRequests).format('0,0'));
-  $('.responses',  table).text(numeral(tester.numResponses).format('0,0'));
-  $('.percentage', table).text(numeral(tester.percentSuccessful).format('0.0%'));
-
-  var strength = $('#strength');
-  var strengthClass = '';
-  switch (tester.strength) {
-    case 'Strong':    strengthClass = 'text-success'; break;
-    case 'Medium':    strengthClass = 'text-info';    break;
-    case 'Weak':      strengthClass = 'text-warning'; break;
-    case 'No Signal': strengthClass = 'text-danger';  break;
-  }
-  strength.removeClass('hidden text-success text-info text-warning text-danger');
-  strength.addClass(strengthClass);
-  $('.text', strength).text(tester.strength);
-}
-
-function updateSettingsForm() {
-  var settings = $('#settings');
-
-  $('#setting-httpType', settings).val(tester.httpType);
-  $('#setting-testUrl',  settings).val(tester.testUrl);
-  $('#setting-useJsonP', settings).prop('checked', tester.useJsonP);
-  $('#setting-timeout',  settings).val(tester.timeout);
-  $('#setting-interval', settings).val(tester.interval);
-}
+$(document).ready(setupPage);

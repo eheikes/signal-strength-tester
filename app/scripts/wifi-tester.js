@@ -1,4 +1,6 @@
 var WifiTester = (function() {
+  'use strict';
+
   function WifiTester() {
     this.httpType = 'GET';
     this.testUrl  = 'http://192.168.0.1/test-payload.txt';
