@@ -24,19 +24,14 @@ var WifiTester = (function() {
   };
 
   WifiTester.prototype.reset = function() {
-    this.isRunning         = false;
     this.numRequests       = 0;
     this.numResponses      = 0;
     this.percentSuccessful = 0;
     this.strength          = '';
-
-    if (this.intervalID) {
-      window.clearInterval(this.intervalID);
-      this.intervalID = null;
-    }
   };
 
   WifiTester.prototype.restart = function() {
+    this.stop();
     this.reset();
     this.start();
   };
@@ -58,9 +53,18 @@ var WifiTester = (function() {
     }, tester.interval);
   };
 
+  WifiTester.prototype.stop = function() {
+    this.isRunning = false;
+
+    if (this.intervalID) {
+      window.clearInterval(this.intervalID);
+      this.intervalID = null;
+    }
+  };
+
   WifiTester.prototype.test = function() {
     var tester = this;
-    var currentIntervalID = tester.intervalID;
+    var currentIntervalID = tester.intervalID; // track the current polling period
 
     tester.numRequests++;
 

@@ -7,7 +7,7 @@ body {
   cursor: pointer;
 }
 
-button#start {
+.actions button {
   margin-bottom: 0.5em;
 }
 

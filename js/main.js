@@ -6,10 +6,27 @@ $(document).ready(function() {
   // Fill out the Settings form.
   updateSettingsForm();
 
-  // Set up the start/restart button.
+  // Set up the start/pause button.
   $('button#start').click(function() {
-    tester.restart();
-    $(this).text('Clear Data & Restart');
+    $('button#clear').removeClass('hidden');
+
+    if (tester.isRunning) {
+      tester.stop();
+      $(this).text('Resume');
+    } else {
+      tester.start();
+      $(this).text('Pause');
+    }
+  });
+
+  // Set up the "Clear Data" button.
+  $('button#clear').click(function() {
+    if (tester.isRunning) {
+      tester.restart(); // important to start a new polling period
+    } else {
+      tester.reset();
+    }
+    updateData();
   });
 
   // Set up the Settings form.
@@ -46,8 +63,6 @@ $(document).ready(function() {
 });
 
 function updateData() {
-  if (!tester.isRunning) { return; }
-
   var table = $('table#data');
   $('.requests',   table).text(numeral(tester.numRequests).format('0,0'));
   $('.responses',  table).text(numeral(tester.numResponses).format('0,0'));
