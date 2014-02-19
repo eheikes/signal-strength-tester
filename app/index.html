@@ -7,11 +7,11 @@
 
     <title>Test Signal Strength</title>
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="css/main.css">
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
 
-    <script src="js/vendor/modernizr-2.7.1-respond-1.1.0.min.js"></script>
+    <script src="bower_components/modernizr/modernizr.js"></script>
   </head>
 
   <body>
@@ -96,11 +96,22 @@
       </div><!-- .panel-group -->
     </div><!-- .container -->
 
-    <script src="js/vendor/jquery-1.10.1.min.js"></script>
-    <script src="js/vendor/bootstrap.min.js"></script>
-    <script src="js/vendor/numeral.min.js"></script>
-    <script src="js/wifi-tester.js"></script>
-    <script src="js/main.js"></script>
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/numeral/numeral.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/plugins.js -->
+    <script src="bower_components/sass-bootstrap/js/transition.js"></script>
+    <script src="bower_components/sass-bootstrap/js/collapse.js"></script>
+    <!-- endbuild -->
+
+    <!-- build:js({app,.tmp}) scripts/main.js -->
+    <script src="scripts/wifi-tester.js"></script>
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
   </body>
 
 </html>

@@ -1,0 +1,11 @@
+{
+  "name": "signal-strength-tester",
+  "private": true,
+  "dependencies": {
+    "sass-bootstrap": "~3.0.0",
+    "modernizr": "~2.7.1",
+    "jquery": "~1.10.2",
+    "numeral": "~1.5.3"
+  },
+  "devDependencies": {}
+}
