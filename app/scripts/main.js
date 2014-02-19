@@ -36,11 +36,12 @@ var updateSettingsForm = function() {
 
   var settings = $('#settings');
 
-  $('#setting-httpType', settings).val(tester.httpType);
-  $('#setting-testUrl',  settings).val(tester.testUrl);
-  $('#setting-useJsonP', settings).prop('checked', tester.useJsonP);
-  $('#setting-timeout',  settings).val(tester.timeout);
-  $('#setting-interval', settings).val(tester.interval);
+  $('#setting-httpType',     settings).val(tester.httpType);
+  $('#setting-testUrl',      settings).val(tester.testUrl);
+  $('#setting-useJsonP',     settings).prop('checked', tester.useJsonP);
+  $('#setting-timeout',      settings).val(tester.timeout);
+  $('#setting-interval',     settings).val(tester.interval);
+  $('#setting-numForRecent', settings).val(tester.numForRecent);
 };
 
 var setupPage = function() {
@@ -86,6 +87,7 @@ var setupPage = function() {
         break;
       case 'timeout':
       case 'interval':
+      case 'numForRecent':
         tester.set(prop, parseFloat(val));
         break;
       default:
