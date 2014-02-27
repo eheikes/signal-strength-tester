@@ -1,6 +1,19 @@
 {
   "name": "signal-strength-tester",
   "version": "0.1.0",
+  "description": "Simple webpage tool for testing network signal strength",
+  "homepage": "https://github.com/eheikes/signal-strength-tester",
+  "bugs": "https://github.com/eheikes/signal-strength-tester/issues",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/eheikes/signal-strength-tester.git"
+  },
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Eric Heikes",
+    "email": "eheikes@gmail.com",
+    "url": "http://ericheikes.com/"
+  },
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -27,8 +40,5 @@
     "load-grunt-tasks": "~0.2.0",
     "time-grunt": "~0.2.0",
     "jshint-stylish": "~0.1.3"
-  },
-  "engines": {
-    "node": ">=0.8.0"
   }
 }
