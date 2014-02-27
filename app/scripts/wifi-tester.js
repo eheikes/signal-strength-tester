@@ -134,8 +134,8 @@ var WifiTester = (function() {
           tester.numResponses++;
           tester.markRecentSuccess(id, true);
         } else {
-          console.log(textStatus);
-          console.log(errorThrown);
+          // console.log(textStatus);
+          // console.log(errorThrown);
         }
       }
     });

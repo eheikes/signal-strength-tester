@@ -1,3 +1,4 @@
+/* jshint node: true */
 'use strict';
 
 // # Globbing
@@ -376,7 +377,7 @@ module.exports = function (grunt) {
       grunt.task.run([
         'clean:server',
         'concurrent:test',
-        'autoprefixer',
+        'autoprefixer'
       ]);
     }
 
