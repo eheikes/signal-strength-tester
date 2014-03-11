@@ -1,4 +1,5 @@
-/* global tester */
+/* global tester, SignalBars */
+var signalBars = null;
 
 var updateData = function() {
   'use strict';
@@ -15,20 +16,26 @@ var updateData = function() {
   switch (tester.strength) {
     case 'Strong':
       strengthClass = 'text-success';
+      signalBars.opts.fillBackgroundColor = '#3c763d';
       break;
     case 'Medium':
       strengthClass = 'text-info';
+      signalBars.opts.fillBackgroundColor = '#31708f';
       break;
     case 'Weak':
       strengthClass = 'text-warning';
+      signalBars.opts.fillBackgroundColor = '#8a6d3b';
       break;
     case 'No Signal':
       strengthClass = 'text-danger';
+      signalBars.opts.fillBackgroundColor = '#a94442';
       break;
   }
   strength.removeClass('hidden text-success text-info text-warning text-danger');
   strength.addClass(strengthClass);
   $('.text', strength).text(tester.strength);
+  signalBars.opts.fillBorderColor = signalBars.opts.fillBackgroundColor;
+  signalBars.setStrength(tester.strengthPct);
 };
 
 var updateSettingsForm = function() {
@@ -103,6 +110,15 @@ var setupPage = function() {
       return false;
     }
   });
+
+  // Create the signal bars graphic.
+  signalBars = new SignalBars({
+    unitSize: 4,
+    emptyBackgroundColor: '#dddddd',
+    emptyBorderColor: '#dddddd',
+    fillBackgroundColor: '#666666',
+    fillBorderColor: '#666666'
+  }, 'signal-bars');
 
   // Update the screen periodically.
   window.setInterval(function() {

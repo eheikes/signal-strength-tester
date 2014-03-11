@@ -30,6 +30,7 @@ var WifiTester = (function() {
 
     var numSuccess = this.numRecentSuccessful();
     var total = this.recentRequests.length;
+    this.strengthPct = numSuccess / total * 100;
     if (numSuccess === 0) {
       this.strength = 'No Signal';
     } else if (numSuccess / total >= 4/5) {
@@ -58,6 +59,7 @@ var WifiTester = (function() {
     this.numResponses      = 0;
     this.percentSuccessful = 0;
     this.strength          = '';
+    this.strengthPct       = 0;
     this.recentRequests    = [];
   };
 
