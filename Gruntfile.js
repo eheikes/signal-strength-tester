@@ -318,12 +318,18 @@ module.exports = function (grunt) {
     // reference in your app
     modernizr: {
       devFile: '<%= yeoman.app %>/bower_components/modernizr/modernizr.js',
-      outputFile: '<%= yeoman.dist %>/bower_components/modernizr/modernizr.js',
+      outputFile: '<%= yeoman.app %>/bower_components/modernizr/modernizr-custom.js',
       files: [
-        '<%= yeoman.dist %>/scripts/{,*/}*.js',
-        '<%= yeoman.dist %>/styles/{,*/}*.css',
-        '!<%= yeoman.dist %>/scripts/vendor/*'
+        '<%= yeoman.app %>/scripts/{,*/}*.js',
+        '<%= yeoman.app %>/styles/{,*/}*.scss'
       ],
+      "extra": {
+        "shiv": true,
+        "printshiv": false,
+        "load": false,
+        "mq": false,
+        "cssclasses": true
+      },
       uglify: true
     },
 
@@ -382,6 +388,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'modernizr',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
@@ -389,7 +396,6 @@ module.exports = function (grunt) {
     'cssmin',
     'uglify',
     'copy:dist',
-    //'modernizr',
     'rev',
     'usemin',
     'htmlmin'
