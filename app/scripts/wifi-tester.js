@@ -4,7 +4,7 @@ var WifiTester = (function() {
   function WifiTester() {
     // Config
     this.httpType      = 'GET';
-    this.testUrl       = 'http://192.168.0.1/test-payload.txt';
+    this.testUrl       = 'http://time.jsontest.com/';
     this.useJsonP      = false;
     this.timeout       = 1000;  // request timeout, in millisecs
     this.interval      = 1000;  // polling frequency, in millisecs
