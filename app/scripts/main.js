@@ -1,6 +1,25 @@
 /* global tester, SignalBars */
 var signalBars = null;
 
+var strengths = {
+  'Strong': {
+    cssClass: 'text-success',
+    color: '#3c763d'
+  },
+  'Medium': {
+    cssClass: 'text-info',
+    color: '#31708f'
+  },
+  'Weak': {
+    cssClass: 'text-warning',
+    color: '#8a6d3b'
+  },
+  'No Signal': {
+    cssClass: 'text-danger',
+    color: '#a94442'
+  }
+};
+
 var updateData = function() {
   'use strict';
 
@@ -11,31 +30,16 @@ var updateData = function() {
   $('.responses',  table).text(numeral(tester.numResponses).format('0,0'));
   $('.percentage', table).text(numeral(tester.percentSuccessful).format('0.0%'));
 
-  var strength = $('#strength');
-  var strengthClass = '';
-  switch (tester.strength) {
-    case 'Strong':
-      strengthClass = 'text-success';
-      signalBars.opts.fillBackgroundColor = '#3c763d';
-      break;
-    case 'Medium':
-      strengthClass = 'text-info';
-      signalBars.opts.fillBackgroundColor = '#31708f';
-      break;
-    case 'Weak':
-      strengthClass = 'text-warning';
-      signalBars.opts.fillBackgroundColor = '#8a6d3b';
-      break;
-    case 'No Signal':
-      strengthClass = 'text-danger';
-      signalBars.opts.fillBackgroundColor = '#a94442';
-      break;
+  if (tester.strength !== '') {
+    var strengthInfo = strengths[tester.strength];
+    var strength = $('#strength');
+    strength.removeClass('hidden text-success text-info text-warning text-danger');
+    strength.addClass(strengthInfo.cssClass);
+    $('.text', strength).text(tester.strength);
+    signalBars.opts.fillBackgroundColor = strengthInfo.color;
+    signalBars.opts.fillBorderColor     = strengthInfo.color;
+    signalBars.setStrength(tester.strengthPct);
   }
-  strength.removeClass('hidden text-success text-info text-warning text-danger');
-  strength.addClass(strengthClass);
-  $('.text', strength).text(tester.strength);
-  signalBars.opts.fillBorderColor = signalBars.opts.fillBackgroundColor;
-  signalBars.setStrength(tester.strengthPct);
 };
 
 var updateSettingsForm = function() {
