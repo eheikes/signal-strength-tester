@@ -323,12 +323,12 @@ module.exports = function (grunt) {
         '<%= yeoman.app %>/scripts/{,*/}*.js',
         '<%= yeoman.app %>/styles/{,*/}*.scss'
       ],
-      "extra": {
-        "shiv": true,
-        "printshiv": false,
-        "load": false,
-        "mq": false,
-        "cssclasses": true
+      'extra': {
+        'shiv': true,
+        'printshiv': false,
+        'load': false,
+        'mq': false,
+        'cssclasses': true
       },
       uglify: true
     },
