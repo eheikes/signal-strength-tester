@@ -297,10 +297,7 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             '.htaccess',
             'images/{,*/}*.webp',
-            '{,*/}*.html',
-            'styles/fonts/{,*/}*.*',
-            // TODO couldn't get this to work // bower_components/' + (this.includeCompass ? 'sass-' : '') + 'bootstrap/' + (this.includeCompass ? 'fonts/' : 'dist/fonts/') +'*.*'
-            'bower_components/sass-bootstrap/fonts/*.*'
+            '{,*/}*.html'
           ]
         }]
       },
