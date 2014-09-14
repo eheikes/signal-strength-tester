@@ -310,26 +310,6 @@ module.exports = function (grunt) {
       }
     },
 
-
-    // Generates a custom Modernizr build that includes only the tests you
-    // reference in your app
-    modernizr: {
-      devFile: '<%= yeoman.app %>/bower_components/modernizr/modernizr.js',
-      outputFile: '<%= yeoman.app %>/bower_components/modernizr/modernizr-custom.js',
-      files: [
-        '<%= yeoman.app %>/scripts/{,*/}*.js',
-        '<%= yeoman.app %>/styles/{,*/}*.scss'
-      ],
-      'extra': {
-        'shiv': true,
-        'printshiv': false,
-        'load': false,
-        'mq': false,
-        'cssclasses': true
-      },
-      uglify: true
-    },
-
     // Run some tasks in parallel to speed up build process
     concurrent: {
       server: [
@@ -385,7 +365,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
-    'modernizr',
     'useminPrepare',
     'concurrent:dist',
     'autoprefixer',
