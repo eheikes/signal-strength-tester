@@ -34,10 +34,6 @@ module.exports = function (grunt) {
           livereload: true
         }
       },
-      jstest: {
-        files: ['test/spec/{,*/}*.js'],
-        tasks: ['test:watch']
-      },
       gruntfile: {
         files: ['Gruntfile.js']
       },
@@ -78,16 +74,6 @@ module.exports = function (grunt) {
           ]
         }
       },
-      test: {
-        options: {
-          port: 9001,
-          base: [
-            '.tmp',
-            'test',
-            '<%= yeoman.app %>'
-          ]
-        }
-      },
       dist: {
         options: {
           open: true,
@@ -122,22 +108,9 @@ module.exports = function (grunt) {
         'Gruntfile.js',
         '<%= yeoman.app %>/scripts/{,*/}*.js',
         '!<%= yeoman.app %>/scripts/signalbars.js',
-        '!<%= yeoman.app %>/scripts/vendor/*',
-        'test/spec/{,*/}*.js'
+        '!<%= yeoman.app %>/scripts/vendor/*'
       ]
     },
-
-
-    // Mocha testing framework configuration options
-    mocha: {
-      all: {
-        options: {
-          run: true,
-          urls: ['http://<%= connect.test.options.hostname %>:<%= connect.test.options.port %>/index.html']
-        }
-      }
-    },
-
 
 
 
@@ -316,9 +289,6 @@ module.exports = function (grunt) {
         'compass:server',
         'copy:styles'
       ],
-      test: [
-        'copy:styles'
-      ],
       dist: [
         'compass',
         'copy:styles',
@@ -348,21 +318,6 @@ module.exports = function (grunt) {
     grunt.task.run(['serve']);
   });
 
-  grunt.registerTask('test', function(target) {
-    if (target !== 'watch') {
-      grunt.task.run([
-        'clean:server',
-        'concurrent:test',
-        'autoprefixer'
-      ]);
-    }
-
-    grunt.task.run([
-      'connect:test',
-      'mocha'
-    ]);
-  });
-
   grunt.registerTask('build', [
     'clean:dist',
     'useminPrepare',
@@ -379,7 +334,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', [
     'newer:jshint',
-    //'test',
     'build'
   ]);
 };
