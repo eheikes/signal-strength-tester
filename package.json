@@ -1,6 +1,6 @@
 {
   "name": "signal-strength-tester",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Simple webpage tool for testing network signal strength",
   "homepage": "https://github.com/eheikes/signal-strength-tester",
   "bugs": "https://github.com/eheikes/signal-strength-tester/issues",
